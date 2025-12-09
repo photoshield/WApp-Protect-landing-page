@@ -1,0 +1,4548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WApp Protect - Protege tu WhatsApp del Robo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* **********************************Hero Section*********************************** */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .hero-image {
+            margin: 30px 0;
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 6px solid rgba(255,255,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(239, 68, 68, 0.6);
+        }
+
+        .urgent-badge {
+            background: #ef4444;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-image img {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .cta-button {
+                padding: 18px 30px;
+                font-size: 1.1rem;
+            }
+        }
+        /* ********************SECCIÓN DE MIEDO *************************** */
+        /* SECCIÓN DE MIEDO */
+        .fear-section {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            padding: 80px 20px;
+            color: white;
+        }
+
+        .fear-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .fear-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .fear-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fbbf24;
+        }
+
+        .fear-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .attack-steps {
+            margin: 50px 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ef4444;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-item:hover {
+            transform: translateX(10px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .step-item.critical {
+            border-left: 5px solid #dc2626;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 25px;
+            flex-shrink: 0;
+        }
+
+        .step-icon.danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .step-icon.critical {
+            background: #dc2626;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #fbbf24;
+        }
+
+        .step-content p {
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .step-time {
+            background: #ef4444;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: 20px;
+        }
+
+        .fear-footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .timer-warning {
+            background: #dc2626;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: pulse 3s infinite;
+        }
+
+        .final-question {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #fbbf24;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ef4444;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .fear-title {
+                font-size: 1.8rem;
+            }
+            
+            .step-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .step-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .step-time {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .final-question {
+                font-size: 1.5rem;
+            }
+        }
+        /* **********************SECCIÓN SOLUCIÓN************************************ */
+        /* SECCIÓN SOLUCIÓN */
+        .solution-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 80px 20px;
+            color: #1e293b;
+        }
+
+        .solution-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solution-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .solution-badge {
+            background: #059669;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .solution-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .solution-subtitle {
+            font-size: 1.2rem;
+            color: #475569;
+        }
+
+        .shields-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .shield-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shield-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .shield-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+
+        .shield-primary::before {
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+        }
+
+        .shield-secondary::before {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+        }
+
+        .shield-critical::before {
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+
+        .shield-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .shield-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .shield-description {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .shield-features {
+            margin-bottom: 25px;
+        }
+
+        .feature {
+            font-size: 0.9rem;
+            color: #059669;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .shield-status {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .shield-status.active {
+            background: #dcfce7;
+            color: #059669;
+        }
+
+        .shield-status.warning {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .shield-status.critical {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .solution-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .demo-phone {
+            text-align: center;
+        }
+
+        .phone-screen {
+            width: 250px;
+            height: 500px;
+            background: #1e293b;
+            border-radius: 25px;
+            padding: 20px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .app-interface {
+            background: white;
+            border-radius: 15px;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-header {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .protection-status {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .status-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .status-circle.active {
+            background: #059669;
+            animation: pulse 2s infinite;
+        }
+
+        .status-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #059669;
+            margin: 0;
+        }
+
+        .status-text p {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: auto;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .stat .label {
+            font-size: 0.7rem;
+            color: #64748b;
+        }
+
+        .demo-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .demo-text p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .demo-text ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .demo-text li {
+            font-size: 1rem;
+            color: #059669;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .solution-cta {
+            text-align: center;
+        }
+
+        .cta-button-large {
+            background: linear-gradient(45deg, #059669, #047857);
+            color: white;
+            padding: 25px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(5, 150, 105, 0.4);
+            text-transform: uppercase;
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(5, 150, 105, 0.6);
+        }
+
+        .cta-note {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .solution-title {
+                font-size: 2rem;
+            }
+            
+            .shields-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .solution-demo {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .phone-screen {
+                width: 200px;
+                height: 400px;
+            }
+            
+            .cta-button-large {
+                padding: 20px 35px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ************************************Sección Crítica - Google Play ****************** */
+        /* SECCIÓN CRÍTICA - GOOGLE PLAY */
+        .critical-section {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            padding: 80px 20px;
+            color: #1e293b;
+        }
+
+        .critical-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .critical-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .warning-badge {
+            background: #f59e0b;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 3s infinite;
+        }
+
+        .critical-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .critical-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .explanation-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+
+        .card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            flex: 1;
+        }
+
+        .explanation-list {
+            space-y: 20px;
+        }
+
+        .explanation-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .explanation-item.restriction {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+        }
+
+        .explanation-item.safe {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+        }
+
+        .explanation-item.normal {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .item-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .item-icon.restriction {
+            color: #ef4444;
+        }
+
+        .item-icon.safe {
+            color: #22c55e;
+        }
+
+        .item-icon.normal {
+            color: #3b82f6;
+        }
+
+        .item-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .item-content p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .warnings-demo {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .demo-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1e293b;
+        }
+
+        .warning-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .warning-example {
+            text-align: center;
+        }
+
+        .phone-warning {
+            background: #1e293b;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .warning-header {
+            background: #374151;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .warning-icon {
+            margin-right: 10px;
+        }
+
+        .warning-body {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            color: #1e293b;
+        }
+
+        .warning-body p {
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .warning-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cancel {
+            background: #e5e7eb;
+            color: #374151;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            flex: 1;
+        }
+
+        .btn-install {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .warning-explanation h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .warning-explanation p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .action {
+            color: #3b82f6 !important;
+            font-weight: 600 !important;
+        }
+
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #059669;
+        }
+
+        .trust-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .critical-cta {
+            text-align: center;
+        }
+
+        .reassurance-box {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            max-width: 600px;
+        }
+
+        .reassurance-box h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .reassurance-box p {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .critical-title {
+                font-size: 1.8rem;
+            }
+            
+            .explanation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .warning-examples {
+                grid-template-columns: 1fr;
+            }
+            
+            .trust-indicators {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .reassurance-box {
+                margin: 0 20px;
+                padding: 25px;
+            }
+        }
+
+        /* ********************************TUTORIAL DE INSTALACIÓN PASO A PASO*************** */
+        /* TUTORIAL DE INSTALACIÓN */
+        .tutorial-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 80px 20px;
+            color: #1e293b;
+        }
+
+        .tutorial-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tutorial-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .tutorial-badge {
+            background: #0ea5e9;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .tutorial-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .tutorial-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .pre-warning {
+            margin-bottom: 50px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .warning-box h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .warning-points {
+            display: grid;
+            gap: 10px;
+        }
+
+        .warning-point {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .point-icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: #059669;
+        }
+
+        .installation-steps {
+            margin-bottom: 50px;
+        }
+
+        .step-item-tutorial {
+            display: grid;
+            grid-template-columns: auto 1fr 2fr;
+            gap: 30px;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step-item-tutorial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .step-item-tutorial.success {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 2px solid #22c55e;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #0ea5e9, #0284c7);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .step-item-tutorial.success .step-number {
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+        }
+
+        .step-visual {
+            text-align: center;
+        }
+
+        .phone-step {
+            width: 120px;
+            height: 200px;
+            background: #1e293b;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        .step-screen {
+            background: white;
+            border-radius: 10px;
+            height: 100%;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+        }
+
+        .download-button {
+            background: #ef4444;
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 60px;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 70%;
+            background: #22c55e;
+            border-radius: 2px;
+            animation: progress 2s ease-in-out infinite;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 70%; }
+        }
+
+        .permission-dialog,
+        .warning-dialog {
+            text-align: center;
+        }
+
+        .dialog-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .dialog-text {
+            font-size: 0.6rem;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .dialog-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-allow,
+        .btn-anyway {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 4px 6px;
+            border-radius: 4px;
+            font-size: 0.5rem;
+            flex: 1;
+        }
+
+        .btn-deny,
+        .btn-cancel-install {
+            background: #e5e7eb;
+            color: #374151;
+            border: none;
+            padding: 4px 6px;
+            border-radius: 4px;
+            font-size: 0.5rem;
+            flex: 1;
+        }
+
+        .app-icon {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .app-name {
+            font-size: 0.6rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .open-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.5rem;
+            font-weight: bold;
+        }
+
+        .permission-list {
+            width: 100%;
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.5rem;
+        }
+
+        .perm-icon {
+            font-size: 0.8rem;
+        }
+
+        .perm-status {
+            background: #22c55e;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.4rem;
+        }
+
+        .shield-big {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .activation-text {
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .activate-button {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.5rem;
+            font-weight: bold;
+        }
+
+        .shield-active {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: #22c55e;
+        }
+
+        .status-text {
+            font-size: 0.6rem;
+            font-weight: bold;
+            color: #22c55e;
+            margin-bottom: 5px;
+        }
+
+        .success-message {
+            font-size: 0.5rem;
+            color: #64748b;
+        }
+
+        .step-content-tutorial h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .step-content-tutorial p {
+            color: #64748b;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .step-tip,
+        .step-action,
+        .step-celebration {
+            background: #f1f5f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .step-action {
+            border-left-color: #22c55e;
+            background: #f0fdf4;
+        }
+
+        .step-celebration {
+            border-left-color: #f59e0b;
+            background: #fffbeb;
+        }
+
+        .time-estimate {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .timer {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .timer-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .timer-text {
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        .tutorial-cta {
+            text-align: center;
+        }
+
+        .cta-button-tutorial {
+            background: linear-gradient(45deg, #0ea5e9, #0284c7);
+            color: white;
+            padding: 25px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(14, 165, 233, 0.4);
+            text-transform: uppercase;
+        }
+
+        .cta-button-tutorial:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.6);
+        }
+
+        .tutorial-note {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .tutorial-title {
+                font-size: 1.8rem;
+            }
+            
+            .step-item-tutorial {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .phone-step {
+                width: 100px;
+                height: 160px;
+            }
+            
+            .cta-button-tutorial {
+                padding: 20px 35px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ****************************** SECCIÓN URGENCIA********************* */
+
+        /* SECCIÓN DE URGENCIA */
+        .urgency-section {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+            padding: 80px 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .urgency-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            100% { transform: translateY(-100px) translateX(-100px); }
+        }
+
+        .urgency-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .urgency-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .alert-badge {
+            background: #fbbf24;
+            color: #92400e;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+        }
+
+        .urgency-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .urgency-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        .live-stats {
+            margin-bottom: 50px;
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .stats-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fbbf24;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .stat-card.danger {
+            border-left: 5px solid #ef4444;
+        }
+
+        .stat-card.critical {
+            border-left: 5px solid #dc2626;
+            animation: pulse 3s infinite;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fbbf24;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: block;
+        }
+
+        .stat-trend {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .stat-trend.up {
+            background: rgba(239, 68, 68, 0.3);
+            color: #fecaca;
+        }
+
+        .stat-trend.down {
+            background: rgba(220, 38, 38, 0.3);
+            color: #fca5a5;
+        }
+
+        .live-monitor {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .monitor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 12px;
+            height: 12px;
+            background: #ef4444;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 1s infinite;
+        }
+
+        .monitor-time {
+            font-family: 'Courier New', monospace;
+            opacity: 0.8;
+        }
+
+        .attack-feed {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .feed-item {
+            display: grid;
+            grid-template-columns: auto auto 1fr;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            align-items: center;
+        }
+
+        .feed-time {
+            color: #fbbf24;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .feed-location {
+            color: #60a5fa;
+            font-size: 0.8rem;
+        }
+
+        .feed-event {
+            color: #fca5a5;
+        }
+
+        .countdown-section {
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            border: 2px solid #fbbf24;
+        }
+
+        .countdown-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 10px;
+        }
+
+        .countdown-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .timer-label {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        .countdown-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .time-unit {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px 20px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .time-value {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fbbf24;
+            font-family: 'Courier New', monospace;
+        }
+
+        .time-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .time-separator {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fbbf24;
+        }
+
+        .countdown-warning {
+            font-size: 0.9rem;
+            color: #fca5a5;
+            font-style: italic;
+        }
+
+        .recent-victims {
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+
+        .recent-victims h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #fbbf24;
+            text-align: center;
+        }
+
+        .victims-list {
+            space-y: 15px;
+        }
+
+        .victim-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ef4444;
+        }
+
+        .victim-avatar {
+            font-size: 2rem;
+            margin-right: 20px;
+        }
+
+        .victim-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .victim-details {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            color: #fca5a5;
+        }
+
+        .urgency-cta {
+            text-align: center;
+        }
+
+        .cta-urgency {
+            margin-bottom: 30px;
+        }
+
+        .cta-urgency h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fbbf24;
+        }
+
+        .cta-urgency p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .cta-button-urgent {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #92400e;
+            padding: 25px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(251, 191, 36, 0.4);
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button-urgent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.6);
+        }
+
+        .urgency-note {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .urgency-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown-display {
+                flex-wrap: wrap;
+            }
+            
+            .time-unit {
+                min-width: 60px;
+                padding: 10px 15px;
+            }
+            
+            .time-value {
+                font-size: 2rem;
+            }
+            
+            .cta-button-urgent {
+                padding: 20px 35px;
+                font-size: 1.2rem;
+            }
+            
+            .feed-item {
+                grid-template-columns: 1fr;
+                gap: 5px;
+                text-align: left;
+            }
+        }
+
+        /* ***********************TESTIMONIOS*************************************** */
+
+        /* SECCIÓN DE TESTIMONIOS */
+        .testimonials-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 80px 20px;
+            color: #1e293b;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testimonials-badge {
+            background: #059669;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .testimonials-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .testimonials-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-card.featured {
+            border: 3px solid #059669;
+            grid-column: span 2;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .user-avatar {
+            margin-right: 15px;
+        }
+
+        .user-avatar img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .user-title {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stars {
+            font-size: 1rem;
+        }
+
+        .rating-text {
+            font-size: 0.8rem;
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .testimonial-content {
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: #e2e8f0;
+            position: absolute;
+            top: -10px;
+            left: -5px;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #374151;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .testimonial-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .verified {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .date {
+            color: #64748b;
+        }
+
+        .save-amount {
+            background: linear-gradient(45deg, #059669, #047857);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .user-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .stat-item-testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stat-number-testimonial {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #059669;
+            margin-bottom: 5px;
+        }
+
+        .stat-label-testimonial {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .video-testimonial {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .video-container {
+            position: relative;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1e293b, #374151);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover .play-button {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px 20px 20px;
+        }
+
+        .video-overlay h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .video-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .video-duration {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .video-description h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .video-description p {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .video-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .testimonials-cta {
+            text-align: center;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            padding: 50px;
+            border-radius: 25px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-box h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta-button-testimonials {
+            background: white;
+            color: #059669;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button-testimonials:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-title {
+                font-size: 1.8rem;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card.featured {
+                grid-column: span 1;
+            }
+            
+            .user-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .video-testimonial {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .cta-box {
+                padding: 35px 25px;
+            }
+        }
+
+        /* ***********************FAQ - Preguntas Frecuentes******************* */
+
+        /* SECCIÓN FAQ */
+        .faq-section {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 80px 20px;
+            color: #1e293b;
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-badge {
+            background: #7c3aed;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .faq-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .faq-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .faq-grid {
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            padding: 25px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+
+        .faq-question.active {
+            background: #eff6ff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .faq-question h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            flex: 1;
+            margin: 0;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #7c3aed;
+            transition: all 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f1f5f9;
+        }
+
+        .faq-question.active .faq-toggle {
+            transform: rotate(45deg);
+            background: #7c3aed;
+            color: white;
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 30px 30px 30px;
+            max-height: 1000px;
+        }
+
+        .faq-answer p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #374151;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .faq-answer li {
+            padding: 8px 0;
+            font-size: 0.95rem;
+            color: #059669;
+        }
+
+        .faq-highlight {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .performance-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .stat-desc {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .transfer-steps {
+            margin: 20px 0;
+        }
+
+        .transfer-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-num {
+            width: 30px;
+            height: 30px;
+            background: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 0.95rem;
+            color: #374151;
+        }
+
+        .restriction-reasons {
+            margin: 20px 0;
+        }
+
+        .reason {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            background: #fef2f2;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ef4444;
+        }
+
+        .reason-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .reason-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .reason-content p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .pricing-comparison {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .price-before,
+        .price-now {
+            text-align: center;
+        }
+
+        .price-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .price-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .price-value.crossed {
+            color: #ef4444;
+            text-decoration: line-through;
+        }
+
+        .price-value.free {
+            color: #059669;
+            font-size: 2rem;
+        }
+
+        .privacy-points {
+            margin: 20px 0;
+            background: #f0fdf4;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #059669;
+        }
+
+        .privacy-point {
+            padding: 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .faq-support {
+            margin-bottom: 60px;
+        }
+
+        .support-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .support-box h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .support-box p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .support-channels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .support-channel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+
+        .channel-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .faq-cta {
+            text-align: center;
+        }
+
+        .faq-cta h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .faq-cta p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .cta-button-faq {
+            background: linear-gradient(45deg, #7c3aed, #6d28d9);
+            color: white;
+            padding: 25px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.4);
+            text-transform: uppercase;
+        }
+
+        .cta-button-faq:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .faq-title {
+                font-size: 1.8rem;
+            }
+            
+            .faq-question {
+                padding: 20px;
+            }
+            
+            .faq-answer.active {
+                padding: 0 20px 25px 20px;
+            }
+            
+            .performance-stats,
+            .pricing-comparison {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .support-channels {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button-faq {
+                padding: 20px 35px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* *******************FOOTER CON MÚLTIPLES CTAs *******************************/
+
+        /* FOOTER CON MÚLTIPLES CTAs */
+        .footer-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+        }
+
+        .footer-cta-main {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-cta-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 15s linear infinite;
+        }
+
+        .footer-cta-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-urgency {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            background: rgba(0,0,0,0.2);
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .urgency-text h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .urgency-text p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .final-stats {
+            display: flex;
+            gap: 30px;
+        }
+
+        .final-stat {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            border-radius: 10px;
+        }
+
+        .final-stat .stat-num {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fbbf24;
+        }
+
+        .final-stat .stat-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .mega-cta {
+            margin-bottom: 50px;
+        }
+
+        .mega-download-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            padding: 0;
+            border-radius: 25px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(251, 191, 36, 0.4);
+            transition: all 0.3s ease;
+            min-width: 600px;
+        }
+
+        .mega-download-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(251, 191, 36, 0.6);
+        }
+
+        .button-content {
+            display: flex;
+            align-items: center;
+            padding: 30px 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .button-icon {
+            font-size: 3rem;
+            margin-right: 25px;
+            color: #92400e;
+        }
+
+        .button-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .main-text {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #92400e;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .sub-text {
+            display: block;
+            font-size: 1rem;
+            color: #a16207;
+            font-weight: 500;
+        }
+
+        .button-arrow {
+            font-size: 2rem;
+            color: #92400e;
+            font-weight: bold;
+            margin-left: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .mega-download-button:hover .button-arrow {
+            transform: translateX(10px);
+        }
+
+        .button-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .mega-download-button:hover .button-shine {
+            left: 100%;
+        }
+
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+
+        .badge-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .badge-content p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .footer-info {
+            padding: 60px 20px 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #fbbf24;
+        }
+
+        .footer-column p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .app-stats {
+            margin-top: 20px;
+        }
+
+        .app-stat {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+
+        .stat-icon {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        .support-links {
+            space-y: 15px;
+        }
+
+        .support-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            color: #e2e8f0;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .support-link:hover {
+            color: #fbbf24;
+            transform: translateX(5px);
+        }
+
+        .link-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .link-content strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .link-content small {
+            opacity: 0.7;
+            font-size: 0.8rem;
+        }
+
+        .guarantees {
+            space-y: 25px;
+        }
+
+        .guarantee-item {
+            margin-bottom: 25px;
+        }
+
+        .guarantee-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .guarantee-icon {
+            font-size: 1.3rem;
+            margin-right: 10px;
+        }
+
+        .guarantee-header strong {
+            color: #fbbf24;
+        }
+
+        .guarantee-item p {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .mobile-download {
+            text-align: center;
+        }
+
+        .mobile-cta p {
+            margin-bottom: 20px;
+        }
+
+        .mobile-download-btn {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .mobile-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .mobile-specs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .spec {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .final-cta-strip {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .strip-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .strip-text h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 5px;
+        }
+
+        .strip-text p {
+            color: #a16207;
+            margin: 0;
+        }
+
+        .strip-cta-btn {
+            background: #92400e;
+            color: #fbbf24;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .strip-cta-btn:hover {
+            background: #78350f;
+            transform: scale(1.05);
+        }
+
+        .footer-bottom {
+            padding: 30px 20px;
+            background: #020617;
+            text-align: center;
+        }
+
+        .footer-legal {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #fbbf24;
+        }
+
+        .footer-disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-disclaimer small {
+            color: #475569;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .final-urgency {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .final-stats {
+                justify-content: center;
+            }
+            
+            .mega-download-button {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .button-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+            
+            .button-icon,
+            .button-arrow {
+                margin: 0;
+            }
+            
+            .main-text {
+                font-size: 1.4rem;
+            }
+            
+            .trust-badges {
+                grid-template-columns: 1fr;
+            }
+            
+            .strip-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-legal {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .legal-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+        <!-- ----------------------------------Hero Section---------------------- -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="urgent-badge">
+                🚨 ALERTA DE SEGURIDAD
+            </div>
+            
+            <h1 class="hero-title">
+                ¿Sabías que roban 15,000 cuentas de WhatsApp DIARIAMENTE en Colombia?
+            </h1>
+            
+            <p class="hero-subtitle">
+                En solo 3 minutos pueden destruir tu vida digital.<br>
+                <strong>WApp Protect es tu único escudo real.</strong>
+            </p>
+            
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Persona preocupada por seguridad móvil">
+            </div>
+            
+            <a href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk" class="cta-button">
+                🛡️ DESCARGAR PROTECCIÓN GRATIS AHORA
+            </a>
+        </div>
+    </section>
+     <!------------------------------ SECCIÓN DE MIEDO ------------------------------->
+    <section class="fear-section">
+        <div class="fear-container">
+            <div class="fear-header">
+                <h2 class="fear-title">
+                    ⚠️ Esto es exactamente lo que hacen los delincuentes cuando roban tu WhatsApp:
+                </h2>
+                <p class="fear-subtitle">
+                    Miles de personas pierden todo cada día. <strong>No seas la próxima víctima.</strong>
+                </p>
+            </div>
+
+            <div class="attack-steps">
+                <div class="step-item">
+                    <div class="step-icon danger">1</div>
+                    <div class="step-content">
+                        <h3>Te envían SMS falso o usan SIM Swapping</h3>
+                        <p>Clonan tu SIM o te engañan con mensajes que parecen oficiales</p>
+                    </div>
+                    <div class="step-time">30 seg</div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon danger">2</div>
+                    <div class="step-content">
+                        <h3>Obtienen tu código de verificación en segundos</h3>
+                        <p>Interceptan el código de 6 dígitos que envía WhatsApp</p>
+                    </div>
+                    <div class="step-time">1 min</div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon danger">3</div>
+                    <div class="step-content">
+                        <h3>Entran a tu WhatsApp desde otro celular</h3>
+                        <p>Tu cuenta queda completamente bajo su control</p>
+                    </div>
+                    <div class="step-time">1 min</div>
+                </div>
+
+                <div class="step-item critical">
+                    <div class="step-icon critical">4</div>
+                    <div class="step-content">
+                        <h3>TE EXTORSIONAN pidiendo dinero a todos tus contactos</h3>
+                        <p>Envían mensajes urgentes pidiendo transferencias a familiares y amigos</p>
+                    </div>
+                    <div class="step-time">2 min</div>
+                </div>
+
+                <div class="step-item critical">
+                    <div class="step-icon critical">5</div>
+                    <div class="step-content">
+                        <h3>Roban tu identidad y arruinan tu reputación</h3>
+                        <p>Publican contenido comprometedor y destruyen tu imagen personal</p>
+                    </div>
+                    <div class="step-time">3 min</div>
+                </div>
+
+                <div class="step-item critical">
+                    <div class="step-icon critical">6</div>
+                    <div class="step-content">
+                        <h3>Vacían tus cuentas bancarias con la info que encuentran</h3>
+                        <p>Usan fotos de documentos y datos personales para acceder a tus finanzas</p>
+                    </div>
+                    <div class="step-time">5 min</div>
+                </div>
+            </div>
+
+            <div class="fear-footer">
+                <div class="timer-warning">
+                    ⏰ <strong>TODO ESTO SUCEDE EN MENOS DE 5 MINUTOS</strong>
+                </div>
+                <h3 class="final-question">
+                    ¿Estás dispuesto/a a arriesgarte?
+                </h3>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">2,847</span>
+                        <span class="stat-label">Cuentas robadas esta semana en Colombia</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$890M</span>
+                        <span class="stat-label">Perdidos por extorsión en 2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ------------------------SECCIÓN SOLUCIÓN------------------------------------ -->
+    <section class="solution-section">
+        <div class="solution-container">
+            <div class="solution-header">
+                <div class="solution-badge">
+                    🛡️ LA SOLUCIÓN DEFINITIVA
+                </div>
+                <h2 class="solution-title">
+                    WApp Protect: La ÚNICA defensa que funciona 24/7
+                </h2>
+                <p class="solution-subtitle">
+                    Mientras otras apps solo prometen, <strong>WApp Protect realmente protege</strong>
+                </p>
+            </div>
+
+            <div class="shields-container">
+                <div class="shield-card shield-primary">
+                    <div class="shield-icon">
+                        🛡️
+                    </div>
+                    <h3 class="shield-title">Blindaje Invisible</h3>
+                    <p class="shield-description">
+                        Vigila tu WhatsApp mientras duermes. Monitoreo silencioso 24/7 sin afectar tu batería.
+                    </p>
+                    <div class="shield-features">
+                        <div class="feature">✓ Protección continua</div>
+                        <div class="feature">✓ Cero impacto en rendimiento</div>
+                        <div class="feature">✓ Funciona en background</div>
+                    </div>
+                    <div class="shield-status active">
+                        ACTIVO 24/7
+                    </div>
+                </div>
+
+                <div class="shield-card shield-secondary">
+                    <div class="shield-icon">
+                        ⚡
+                    </div>
+                    <h3 class="shield-title">Alerta Relámpago</h3>
+                    <p class="shield-description">
+                        Te avisa en el SEGUNDO que intentan robarte. Detección instantánea de amenazas.
+                    </p>
+                    <div class="shield-features">
+                        <div class="feature">✓ Notificación inmediata</div>
+                        <div class="feature">✓ Detección en tiempo real</div>
+                        <div class="feature">✓ Sin falsos positivos</div>
+                    </div>
+                    <div class="shield-status warning">
+                        VELOCIDAD: 0.5 SEG
+                    </div>
+                </div>
+
+                <div class="shield-card shield-critical">
+                    <div class="shield-icon">
+                        🚨
+                    </div>
+                    <h3 class="shield-title">Botón de Pánico</h3>
+                    <p class="shield-description">
+                        Bloquea TODO con un toque. Cierre forzoso + refuerzo 2FA automático.
+                    </p>
+                    <div class="shield-features">
+                        <div class="feature">✓ Acción instantánea</div>
+                        <div class="feature">✓ Cierre de todas las sesiones</div>
+                        <div class="feature">✓ Activación 2FA reforzada</div>
+                    </div>
+                    <div class="shield-status critical">
+                        PODER TOTAL
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution-demo">
+                <div class="demo-phone">
+                    <div class="phone-screen">
+                        <div class="app-interface">
+                            <div class="app-header">
+                                🛡️ WApp Protect
+                            </div>
+                            <div class="protection-status">
+                                <div class="status-circle active"></div>
+                                <div class="status-text">
+                                    <h4>PROTECCIÓN ACTIVA</h4>
+                                    <p>Tu WhatsApp está completamente seguro</p>
+                                </div>
+                            </div>
+                            <div class="quick-stats">
+                                <div class="stat">
+                                    <span class="number">0</span>
+                                    <span class="label">Amenazas detectadas</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="number">24/7</span>
+                                    <span class="label">Protección activa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="demo-text">
+                    <h3>Interfaz súper simple</h3>
+                    <p>Solo 2 pantallas. Una vez activado, <strong>WApp Protect trabaja invisible</strong> manteniendo tu WhatsApp 100% seguro.</p>
+                    <ul>
+                        <li>✓ Instalación en 60 segundos</li>
+                        <li>✓ Configuración automática</li>
+                        <li>✓ Funciona sin internet</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="solution-cta">
+                <a href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk" class="cta-button-large">
+                    🛡️ ACTIVAR PROTECCIÓN AHORA - GRATIS
+                </a>
+                <p class="cta-note">
+                    Más de 50,000 usuarios ya protegen su WhatsApp
+                </p>
+            </div>
+        </div>
+    </section>
+    <!------------------------------- Sección Crítica - Google Play-------------------------------->
+    <!-- SECCIÓN CRÍTICA - GOOGLE PLAY -->
+    <section class="critical-section">
+        <div class="critical-container">
+            <div class="critical-header">
+                <div class="warning-badge">
+                    ⚠️ INFORMACIÓN IMPORTANTE
+                </div>
+                <h2 class="critical-title">
+                    Sobre las advertencias de instalación
+                </h2>
+                <p class="critical-subtitle">
+                    Sabemos que verás advertencias. <strong>Te explicamos exactamente por qué y por qué son normales.</strong>
+                </p>
+            </div>
+
+            <div class="explanation-grid">
+                <!-- Columna 1: Por qué no está en Google Play -->
+                <div class="explanation-card">
+                    <div class="card-header">
+                        <div class="card-icon">🏪</div>
+                        <h3>¿Por qué WApp Protect no está en Google Play Store?</h3>
+                    </div>
+                    <div class="explanation-list">
+                        <div class="explanation-item">
+                            <div class="item-icon restriction">🚫</div>
+                            <div class="item-content">
+                                <h4>Políticas Restrictivas de Google</h4>
+                                <p>Google NO permite aplicaciones que accedan a notificaciones de otras apps por sus políticas de privacidad.</p>
+                            </div>
+                        </div>
+                        <div class="explanation-item">
+                            <div class="item-icon restriction">🔒</div>
+                            <div class="item-content">
+                                <h4>Seguridad "Profunda" Prohibida</h4>
+                                <p>Las tiendas oficiales prohíben aplicaciones de "seguridad profunda" como WApp Protect.</p>
+                            </div>
+                        </div>
+                        <div class="explanation-item">
+                            <div class="item-icon restriction">⚡</div>
+                            <div class="item-content">
+                                <h4>Permisos Especiales Necesarios</h4>
+                                <p>WApp Protect necesita permisos que Google considera "invasivos" (aunque son para TU protección).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Sobre las advertencias -->
+                <div class="explanation-card">
+                    <div class="card-header">
+                        <div class="card-icon">🛡️</div>
+                        <h3>¿Son peligrosas las advertencias de Android?</h3>
+                    </div>
+                    <div class="explanation-list">
+                        <div class="explanation-item safe">
+                            <div class="item-icon safe">❌</div>
+                            <div class="item-content">
+                                <h4>NO son peligrosas</h4>
+                                <p>Las advertencias son automáticas para CUALQUIER APK externo, sin excepción.</p>
+                            </div>
+                        </div>
+                        <div class="explanation-item safe">
+                            <div class="item-icon safe">❌</div>
+                            <div class="item-content">
+                                <h4>NO significa virus o malware</h4>
+                                <p>Android muestra esta advertencia incluso para apps completamente seguras.</p>
+                            </div>
+                        </div>
+                        <div class="explanation-item normal">
+                            <div class="item-icon normal">✅</div>
+                            <div class="item-content">
+                                <h4>SÍ, es completamente normal</h4>
+                                <p>Es esperado ver estos mensajes. Forma parte del proceso estándar de Android.</p>
+                            </div>
+                        </div>
+                        <div class="explanation-item normal">
+                            <div class="item-icon normal">✅</div>
+                            <div class="item-content">
+                                <h4>SÍ, miles ya lo instalaron</h4>
+                                <p>Más de 50,000 usuarios ya instalaron WApp Protect sin ningún problema.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplos visuales de advertencias -->
+            <div class="warnings-demo">
+                <h3 class="demo-title">Estas son las advertencias NORMALES que verás:</h3>
+                <div class="warning-examples">
+                    <div class="warning-example">
+                        <div class="phone-warning">
+                            <div class="warning-header">
+                                <span class="warning-icon">⚠️</span>
+                                <span>Instalar aplicación</span>
+                            </div>
+                            <div class="warning-body">
+                                <p>"Esta aplicación no se descargó de Google Play Store"</p>
+                                <div class="warning-buttons">
+                                    <button class="btn-cancel">Cancelar</button>
+                                    <button class="btn-install">Instalar de todos modos</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="warning-explanation">
+                            <h4>Advertencia 1: Origen Desconocido</h4>
+                            <p><strong>NORMAL</strong> - Solo indica que no viene de Google Play</p>
+                            <p class="action">👉 Toca "Instalar de todos modos"</p>
+                        </div>
+                    </div>
+
+                    <div class="warning-example">
+                        <div class="phone-warning">
+                            <div class="warning-header">
+                                <span class="warning-icon">🛡️</span>
+                                <span>Google Play Protect</span>
+                            </div>
+                            <div class="warning-body">
+                                <p>"Esta aplicación no fue revisada por Google Play Protect"</p>
+                                <div class="warning-buttons">
+                                    <button class="btn-cancel">No instalar</button>
+                                    <button class="btn-install">Instalar de todos modos</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="warning-explanation">
+                            <h4>Advertencia 2: No Revisada</h4>
+                            <p><strong>NORMAL</strong> - Google no revisó esta app específica</p>
+                            <p class="action">👉 Toca "Instalar de todos modos"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <span class="trust-number">50,000+</span>
+                    <span class="trust-label">Instalaciones seguras</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">0</span>
+                    <span class="trust-label">Reportes de malware</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-number">4.8★</span>
+                    <span class="trust-label">Calificación promedio</span>
+                </div>
+            </div>
+
+            <div class="critical-cta">
+                <div class="reassurance-box">
+                    <h4>💯 Garantía de Seguridad</h4>
+                    <p>WApp Protect es 100% seguro. Las advertencias son solo protocolo de Android para cualquier app externa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ----------------------TUTORIAL DE INSTALACIÓN PASO A PASO--------------------- -->
+
+    <!-- TUTORIAL DE INSTALACIÓN -->
+    <section class="tutorial-section">
+        <div class="tutorial-container">
+            <div class="tutorial-header">
+                <div class="tutorial-badge">
+                    📱 GUÍA DE INSTALACIÓN
+                </div>
+                <h2 class="tutorial-title">
+                    Cómo instalar WApp Protect en 60 segundos
+                </h2>
+                <p class="tutorial-subtitle">
+                    Sigue estos pasos exactos y tendrás tu WhatsApp protegido en menos de 1 minuto.
+                </p>
+            </div>
+
+            <!-- Advertencias previas -->
+            <div class="pre-warning">
+                <div class="warning-box">
+                    <h3>⚠️ ANTES DE DESCARGAR - LEE ESTO:</h3>
+                    <div class="warning-points">
+                        <div class="warning-point">
+                            <span class="point-icon">✅</span>
+                            <span>Acepta que verás advertencias normales de Android</span>
+                        </div>
+                        <div class="warning-point">
+                            <span class="point-icon">✅</span>
+                            <span>Estas advertencias NO significan peligro</span>
+                        </div>
+                        <div class="warning-point">
+                            <span class="point-icon">✅</span>
+                            <span>Son parte del proceso estándar para cualquier APK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pasos de instalación -->
+            <div class="installation-steps">
+                <div class="step-item-tutorial">
+                    <div class="step-number">1</div>
+                    <div class="step-visual">
+                        <div class="phone-step">
+                            <div class="step-screen download">
+                                <div class="download-button">
+                                    🛡️ DESCARGAR APK
+                                </div>
+                                <div class="download-progress">
+                                    <div class="progress-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-tutorial">
+                        <h3>Descargar APK</h3>
+                        <p>Toca el botón "🛡️ DESCARGAR PROTECCIÓN GRATIS" que está arriba en esta página.</p>
+                        <div class="step-tip">
+                            💡 <strong>Tip:</strong> El archivo se descargará automáticamente
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item-tutorial">
+                    <div class="step-number">2</div>
+                    <div class="step-visual">
+                        <div class="phone-step">
+                            <div class="step-screen permission">
+                                <div class="permission-dialog">
+                                    <div class="dialog-icon">⚠️</div>
+                                    <div class="dialog-text">¿Permitir instalación de origen desconocido?</div>
+                                    <div class="dialog-buttons">
+                                        <button class="btn-allow">Permitir</button>
+                                        <button class="btn-deny">Denegar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-tutorial">
+                        <h3>Permitir Origen Desconocido</h3>
+                        <p>Android te preguntará si permites instalar apps de origen desconocido.</p>
+                        <div class="step-action">
+                            👉 <strong>Toca "PERMITIR"</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item-tutorial">
+                    <div class="step-number">3</div>
+                    <div class="step-visual">
+                        <div class="phone-step">
+                            <div class="step-screen warning">
+                                <div class="warning-dialog">
+                                    <div class="dialog-icon">🛡️</div>
+                                    <div class="dialog-text">App no verificada por Google Play Protect</div>
+                                    <div class="dialog-buttons">
+                                        <button class="btn-anyway">Instalar de todos modos</button>
+                                        <button class="btn-cancel-install">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-tutorial">
+                        <h3>Ignorar Advertencia</h3>
+                        <p>Aparecerá "App no verificada" - Esta advertencia es NORMAL.</p>
+                        <div class="step-action">
+                            👉 <strong>Toca "Instalar de todos modos"</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item-tutorial">
+                    <div class="step-number">4</div>
+                    <div class="step-visual">
+                        <div class="phone-step">
+                            <div class="step-screen installed">
+                                <div class="app-icon">🛡️</div>
+                                <div class="app-name">WApp Protect</div>
+                                <button class="open-button">ABRIR</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-tutorial">
+                        <h3>Abrir WApp Protect</h3>
+                        <p>Busca el ícono azul con escudo en tu pantalla de inicio o lista de apps.</p>
+                        <div class="step-action">
+                            👉 <strong>Toca "ABRIR"</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item-tutorial">
+                    <div class="step-number">5</div>
+                    <div class="step-visual">
+                        <div class="phone-step">
+                            <div class="step-screen permissions">
+                                <div class="permission-list">
+                                    <div class="permission-item">
+                                        <span class="perm-icon">🔔</span>
+                                        <span>Acceso a notificaciones</span>
+                                        <span class="perm-status">Permitir</span>
+                                    </div>
+                                    <div class="permission-item">
+                                        <span class="perm-icon">📱</span>
+                                        <span>Ejecutar en segundo plano</span>
+                                        <span class="perm-status">Permitir</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-tutorial">
+                        <h3>Dar Permisos</h3>
+                        <p>La app te pedirá acceso a notificaciones y otros permisos necesarios.</p>
+                        <div class="step-action">
+                            👉 <strong>Acepta TODO - Son necesarios para protegerte</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item-tutorial">
+                    <div class="step-number">6</div>
+                    <div class="step-visual">
+                        <div class="phone-step">
+                            <div class="step-screen activate">
+                                <div class="activation-screen">
+                                    <div class="shield-big">🛡️</div>
+                                    <div class="activation-text">Activar Protección</div>
+                                    <button class="activate-button">ACTIVAR AHORA</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-tutorial">
+                        <h3>Activar Protección</h3>
+                        <p>Verás un botón verde grande para activar la protección.</p>
+                        <div class="step-action">
+                            👉 <strong>Toca "ACTIVAR AHORA"</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item-tutorial success">
+                    <div class="step-number">✓</div>
+                    <div class="step-visual">
+                        <div class="phone-step">
+                            <div class="step-screen protected">
+                                <div class="success-screen">
+                                    <div class="shield-active">🛡️</div>
+                                    <div class="status-text">PROTECCIÓN ACTIVA</div>
+                                    <div class="success-message">Tu WhatsApp está blindado 24/7</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-tutorial">
+                        <h3>¡Listo! Completamente Protegido</h3>
+                        <p>Tu WhatsApp ahora está blindado 24/7 contra robos y secuestros.</p>
+                        <div class="step-celebration">
+                            🎉 <strong>¡Felicidades! Ahora estás protegido</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tiempo total -->
+            <div class="time-estimate">
+                <div class="timer">
+                    <span class="timer-icon">⏱️</span>
+                    <span class="timer-text">Tiempo total de instalación: <strong>60 segundos</strong></span>
+                </div>
+            </div>
+
+            <!-- CTA final -->
+            <div class="tutorial-cta">
+                <a href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk" class="cta-button-tutorial">
+                    🛡️ COMENZAR INSTALACIÓN AHORA
+                </a>
+                <p class="tutorial-note">
+                    No esperes más. Cada minuto sin protección es un riesgo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+     <!-- --------------------------SECCIÓN URGENCIA--------------------------- -->
+
+     <!-- SECCIÓN DE URGENCIA -->
+    <section class="urgency-section">
+        <div class="urgency-container">
+            <div class="urgency-header">
+                <div class="alert-badge">
+                    🚨 ALERTA EN TIEMPO REAL
+                </div>
+                <h2 class="urgency-title">
+                    ⏰ ¿Cuánto tiempo tienes antes del próximo ataque?
+                </h2>
+                <p class="urgency-subtitle">
+                    Los ciberdelincuentes no descansan. <strong>Cada segundo cuenta.</strong>
+                </p>
+            </div>
+
+            <!-- Estadísticas en tiempo real -->
+            <div class="live-stats">
+                <div class="stats-header">
+                    <h3>📊 Ataques a WhatsApp - Últimos 7 días en Colombia:</h3>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card danger">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="medellin-attacks">2,847</span>
+                            <span class="stat-label">Cuentas robadas en Medellín</span>
+                        </div>
+                        <div class="stat-trend up">↗️ +127 hoy</div>
+                    </div>
+
+                    <div class="stat-card danger">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="money-stolen">$847M</span>
+                            <span class="stat-label">Perdidos en extorsiones</span>
+                        </div>
+                        <div class="stat-trend up">↗️ +$23M hoy</div>
+                    </div>
+
+                    <div class="stat-card critical">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="attacks-minute">3.2</span>
+                            <span class="stat-label">Ataques por minuto</span>
+                        </div>
+                        <div class="stat-trend up">↗️ Aumentando</div>
+                    </div>
+
+                    <div class="stat-card critical">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-content">
+                            <span class="stat-number">4.3min</span>
+                            <span class="stat-label">Tiempo promedio de robo</span>
+                        </div>
+                        <div class="stat-trend down">↘️ Cada vez más rápido</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monitor en vivo falso -->
+            <div class="live-monitor">
+                <div class="monitor-header">
+                    <div class="live-indicator">
+                        <span class="live-dot"></span>
+                        <span>EN VIVO - Monitor de Ataques</span>
+                    </div>
+                    <div class="monitor-time" id="current-time"></div>
+                </div>
+
+                <div class="attack-feed">
+                    <div class="feed-item">
+                        <span class="feed-time">Hace 2 min</span>
+                        <span class="feed-location">📍 Poblado, Medellín</span>
+                        <span class="feed-event">WhatsApp comprometido - Extorsión $2.5M</span>
+                    </div>
+                    <div class="feed-item">
+                        <span class="feed-time">Hace 5 min</span>
+                        <span class="feed-location">📍 Laureles, Medellín</span>
+                        <span class="feed-event">SIM Swapping detectado - Cuenta robada</span>
+                    </div>
+                    <div class="feed-item">
+                        <span class="feed-time">Hace 8 min</span>
+                        <span class="feed-location">📍 Envigado</span>
+                        <span class="feed-event">Código de verificación interceptado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contador regresivo -->
+            <div class="countdown-section">
+                <div class="countdown-header">
+                    <h3>⚠️ OFERTA LIMITADA - PROTECCIÓN GRATUITA</h3>
+                    <p>Esta protección normalmente cuesta $49.99/mes. Hoy es GRATIS por tiempo limitado.</p>
+                </div>
+
+                <div class="countdown-timer">
+                    <div class="timer-label">Tiempo restante para acceso gratuito:</div>
+                    <div class="countdown-display">
+                        <div class="time-unit">
+                            <span class="time-value" id="hours">02</span>
+                            <span class="time-label">Horas</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                            <span class="time-value" id="minutes">47</span>
+                            <span class="time-label">Minutos</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                            <span class="time-value" id="seconds">33</span>
+                            <span class="time-label">Segundos</span>
+                        </div>
+                    </div>
+                    <div class="countdown-warning">
+                        Después de este tiempo, WApp Protect costará $49.99/mes
+                    </div>
+                </div>
+            </div>
+
+            <!-- Últimas víctimas -->
+            <div class="recent-victims">
+                <h3>🚨 Últimas Víctimas Reportadas:</h3>
+                <div class="victims-list">
+                    <div class="victim-item">
+                        <div class="victim-avatar">👨‍💼</div>
+                        <div class="victim-info">
+                            <div class="victim-name">Carlos M. - Empresario</div>
+                            <div class="victim-details">Perdió $8.5M por extorsión • Hace 23 min</div>
+                        </div>
+                    </div>
+                    <div class="victim-item">
+                        <div class="victim-avatar">👩‍🎓</div>
+                        <div class="victim-info">
+                            <div class="victim-name">Andrea L. - Estudiante</div>
+                            <div class="victim-details">Cuenta robada, fotos comprometidas • Hace 41 min</div>
+                        </div>
+                    </div>
+                    <div class="victim-item">
+                        <div class="victim-avatar">👨‍⚕️</div>
+                        <div class="victim-info">
+                            <div class="victim-name">Dr. Roberto S.</div>
+                            <div class="victim-details">Pacientes extorsionados usando su WhatsApp • Hace 1h 12min</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA urgente -->
+            <div class="urgency-cta">
+                <div class="cta-urgency">
+                    <h4>⚡ NO SEAS LA PRÓXIMA VÍCTIMA</h4>
+                    <p>Mientras lees esto, 3 cuentas más fueron robadas.</p>
+                </div>
+                <a href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk" class="cta-button-urgent">
+                    🛡️ PROTEGERME AHORA - GRATIS
+                </a>
+                <div class="urgency-note">
+                    ⚠️ La protección se activa en menos de 60 segundos
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+    // Actualizar estadísticas en tiempo real
+    function updateLiveStats() {
+        const medellínElement = document.getElementById('medellin-attacks');
+        const moneyElement = document.getElementById('money-stolen');
+        const attacksElement = document.getElementById('attacks-minute');
+        
+        if (medellínElement) {
+            let current = parseInt(medellínElement.textContent.replace(',', ''));
+            medellínElement.textContent = (current + Math.floor(Math.random() * 3) + 1).toLocaleString();
+        }
+        
+        if (moneyElement) {
+            let current = parseInt(moneyElement.textContent.replace('$', '').replace('M', ''));
+            moneyElement.textContent = '$' + (current + Math.floor(Math.random() * 2) + 1) + 'M';
+        }
+        
+        if (attacksElement) {
+            attacksElement.textContent = (Math.random() * 2 + 2.5).toFixed(1);
+        }
+    }
+
+    // Contador regresivo
+    function updateCountdown() {
+        const hoursElement = document.getElementById('hours');
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+        
+        let hours = parseInt(hoursElement.textContent);
+        let minutes = parseInt(minutesElement.textContent);
+        let seconds = parseInt(secondsElement.textContent);
+        
+        seconds--;
+        
+        if (seconds < 0) {
+            seconds = 59;
+            minutes--;
+            
+            if (minutes < 0) {
+                minutes = 59;
+                hours--;
+                
+                if (hours < 0) {
+                    hours = 2; // Reinicia en 2 horas
+                    minutes = 47;
+                    seconds = 33;
+                }
+            }
+        }
+        
+        hoursElement.textContent = hours.toString().padStart(2, '0');
+        minutesElement.textContent = minutes.toString().padStart(2, '0');
+        secondsElement.textContent = seconds.toString().padStart(2, '0');
+    }
+
+    // Actualizar tiempo actual
+    function updateCurrentTime() {
+        const timeElement = document.getElementById('current-time');
+        if (timeElement) {
+            const now = new Date();
+            timeElement.textContent = now.toLocaleTimeString('es-ES');
+        }
+    }
+
+    // Inicializar timers
+    setInterval(updateLiveStats, 15000); // Actualiza cada 15 segundos
+    setInterval(updateCountdown, 1000); // Actualiza cada segundo
+    setInterval(updateCurrentTime, 1000); // Actualiza cada segundo
+    
+    // Actualizar inmediatamente
+    updateCurrentTime();
+</script>
+
+<!-- ***********************TESTIMONIOS******************************** -->
+
+<!-- SECCIÓN DE TESTIMONIOS -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <div class="testimonials-header">
+                <div class="testimonials-badge">
+                    ⭐ HISTORIAS REALES
+                </div>
+                <h2 class="testimonials-title">
+                    Miles ya protegen su WhatsApp con WApp Protect
+                </h2>
+                <p class="testimonials-subtitle">
+                    Estas son solo algunas de las <strong>historias de usuarios que evitaron ser víctimas</strong> gracias a nuestra protección.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonio 1 -->
+                <div class="testimonial-card featured">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Carlos Mendoza">
+                        </div>
+                        <div class="user-info">
+                            <h4 class="user-name">Carlos Mendoza</h4>
+                            <p class="user-title">Empresario • Medellín</p>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">
+                            <strong>WApp Protect me salvó de una extorsión de $2,000,000.</strong> A las 3AM recibí la alerta de que alguien intentaba acceder a mi WhatsApp. En segundos activé el botón de pánico y bloqueé todo. Al día siguiente descubrí que los delincuentes ya tenían mi SIM clonado y esperaban el código de verificación. Sin WApp Protect habría perdido todo.
+                        </p>
+                        <div class="testimonial-meta">
+                            <span class="verified">✅ Verificado</span>
+                            <span class="date">Hace 2 semanas</span>
+                        </div>
+                    </div>
+                    <div class="save-amount">
+                        💰 Ahorró: $2,000,000 COP
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b37c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="María González">
+                        </div>
+                        <div class="user-info">
+                            <h4 class="user-name">María González</h4>
+                            <p class="user-title">Doctora • Bogotá</p>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">
+                            Como médica, mi WhatsApp tiene información sensible de pacientes. <strong>WApp Protect detectó 3 intentos de hackeo en un mes.</strong> Cada vez que me alertó, pude actuar inmediatamente. No solo protegió mi reputación profesional, sino la privacidad de mis pacientes.
+                        </p>
+                        <div class="testimonial-meta">
+                            <span class="verified">✅ Verificado</span>
+                            <span class="date">Hace 1 semana</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Andrés Restrepo">
+                        </div>
+                        <div class="user-info">
+                            <h4 class="user-name">Andrés Restrepo</h4>
+                            <p class="user-title">Contador Público • Cali</p>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">
+                            Los criminales intentaron robar mi WhatsApp para pedirle dinero a mis clientes haciéndose pasar por mí. <strong>WApp Protect me alertó en tiempo real</strong> y pude avisar a todos inmediatamente. Salvé mi negocio y la confianza de 200+ clientes.
+                        </p>
+                        <div class="testimonial-meta">
+                            <span class="verified">✅ Verificado</span>
+                            <span class="date">Hace 4 días</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="Laura Vargas">
+                        </div>
+                        <div class="user-info">
+                            <h4 class="user-name">Laura Vargas</h4>
+                            <p class="user-title">Madre de Familia • Medellín</p>
+                            <div class="rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="quote-icon">"</div>
+                        <p class="testimonial-text">
+                            Intentaron extorsionar a mi esposo usando fotos de nuestros hijos que tenía en WhatsApp. <strong>Por suerte WApp Protect bloqueó el acceso antes de que robaran las fotos.</strong> No puedo imaginar lo que habría pasado sin esta protección. Vale cada peso.
+                        </p>
+                        <div class="testimonial-meta">
+                            <span class="verified">✅ Verificado</span>
+                            <span class="date">Hace 6 días</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadísticas de usuarios -->
+            <div class="user-stats">
+                <div class="stat-item-testimonial">
+                    <span class="stat-number-testimonial">47,832</span>
+                    <span class="stat-label-testimonial">Usuarios Protegidos</span>
+                </div>
+                <div class="stat-item-testimonial">
+                    <span class="stat-number-testimonial">98.7%</span>
+                    <span class="stat-label-testimonial">Satisfacción</span>
+                </div>
+                <div class="stat-item-testimonial">
+                    <span class="stat-number-testimonial">12,436</span>
+                    <span class="stat-label-testimonial">Ataques Bloqueados</span>
+                </div>
+                <div class="stat-item-testimonial">
+                    <span class="stat-number-testimonial">$847M</span>
+                    <span class="stat-label-testimonial">Dinero Protegido</span>
+                </div>
+            </div>
+
+            <!-- Video testimonial simulado -->
+            <div class="video-testimonial">
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <div class="play-button">
+                            <span class="play-icon">▶️</span>
+                        </div>
+                        <div class="video-overlay">
+                            <h4>🎥 Testimonio en Video</h4>
+                            <p>"Así me salvé de perder $5 millones"</p>
+                            <span class="video-duration">2:34</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-description">
+                    <h4>Roberto Silva - Gerente de Ventas</h4>
+                    <p>Cuenta cómo WApp Protect lo alertó justo cuando los criminales estaban intentando acceder a su WhatsApp corporativo con información de todos sus clientes VIP.</p>
+                    <div class="video-stats">
+                        <span>👁️ 23,847 visualizaciones</span>
+                        <span>👍 1,204 likes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA después de testimonios -->
+            <div class="testimonials-cta">
+                <div class="cta-box">
+                    <h3>¿Quieres ser el próximo en compartir tu historia de éxito?</h3>
+                    <p>Únete a los miles que ya protegen su WhatsApp</p>
+                    <a href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk" class="cta-button-testimonials">
+                        🛡️ PROTEGER MI WHATSAPP GRATIS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ------------------------FAQ - Preguntas Frecuentes --------------------------------->
+
+    <!-- SECCIÓN FAQ -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <div class="faq-badge">
+                    ❓ PREGUNTAS FRECUENTES
+                </div>
+                <h2 class="faq-title">
+                    Resolvemos todas tus dudas sobre WApp Protect
+                </h2>
+                <p class="faq-subtitle">
+                    Las preguntas más comunes que nos hacen nuestros usuarios antes de proteger su WhatsApp.
+                </p>
+            </div>
+
+            <div class="faq-grid">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-icon">⚖️</div>
+                        <h3>¿Es legal usar WApp Protect?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Sí, es completamente legal.</strong> WApp Protect no hackea ni accede ilegalmente a ningún sistema. Simplemente monitorea las notificaciones de tu propio dispositivo para proteger TU cuenta.</p>
+                        <p>La aplicación:</p>
+                        <ul>
+                            <li>✅ Solo accede a TU dispositivo con TU permiso</li>
+                            <li>✅ No intercepta comunicaciones de terceros</li>
+                            <li>✅ No viola ninguna ley de privacidad</li>
+                            <li>✅ Cumple con todas las regulaciones colombianas</li>
+                        </ul>
+                        <div class="faq-highlight">
+                            💡 <strong>Dato importante:</strong> Es igual de legal que usar un antivirus o cualquier app de seguridad en tu celular.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-icon">📱</div>
+                        <h3>¿Afecta el rendimiento de mi celular?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>No, para nada.</strong> WApp Protect está optimizado para consumir mínimos recursos y no afectar la velocidad de tu celular.</p>
+                        <div class="performance-stats">
+                            <div class="stat">
+                                <span class="stat-value">< 1%</span>
+                                <span class="stat-desc">Uso de batería</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">< 5MB</span>
+                                <span class="stat-desc">Uso de RAM</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">0MB</span>
+                                <span class="stat-desc">Datos móviles</span>
+                            </div>
+                        </div>
+                        <p><strong>Funciona en segundo plano de forma invisible</strong> sin ralentizar aplicaciones, juegos o navegación.</p>
+                        <div class="faq-highlight">
+                            ✅ Compatible con todos los Android desde la versión 7.0 hasta la más reciente.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-icon">🔄</div>
+                        <h3>¿Qué pasa si cambio de teléfono?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Tranquilo, puedes transferir tu protección fácilmente.</strong></p>
+                        <div class="transfer-steps">
+                            <div class="transfer-step">
+                                <span class="step-num">1</span>
+                                <span class="step-text">Descarga WApp Protect en tu nuevo celular</span>
+                            </div>
+                            <div class="transfer-step">
+                                <span class="step-num">2</span>
+                                <span class="step-text">Instala siguiendo los mismos pasos</span>
+                            </div>
+                            <div class="transfer-step">
+                                <span class="step-num">3</span>
+                                <span class="step-text">Tu protección se activa automáticamente</span>
+                            </div>
+                        </div>
+                        <p><strong>No pierdes ninguna configuración.</strong> WApp Protect se sincroniza automáticamente con tu WhatsApp sin importar el dispositivo.</p>
+                        <div class="faq-highlight">
+                            📞 <strong>Soporte 24/7:</strong> Si tienes problemas en el cambio, nuestro equipo te ayuda gratis.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-icon">🏪</div>
+                        <h3>¿Por qué no puedo encontrarla en Play Store?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Google tiene políticas muy restrictivas</strong> que impiden apps como WApp Protect en su tienda.</p>
+                        <div class="restriction-reasons">
+                            <div class="reason">
+                                <span class="reason-icon">🚫</span>
+                                <div class="reason-content">
+                                    <h4>Acceso a Notificaciones</h4>
+                                    <p>Google prohíbe apps que monitoren notificaciones de otras aplicaciones, aunque sea para protegerte.</p>
+                                </div>
+                            </div>
+                            <div class="reason">
+                                <span class="reason-icon">🔒</span>
+                                <div class="reason-content">
+                                    <h4>Seguridad "Profunda"</h4>
+                                    <p>Las tiendas oficiales no permiten aplicaciones de seguridad avanzada como WApp Protect.</p>
+                                </div>
+                            </div>
+                            <div class="reason">
+                                <span class="reason-icon">⚡</span>
+                                <div class="reason-content">
+                                    <h4>Permisos Especiales</h4>
+                                    <p>Necesitamos permisos que Google considera "invasivos" (aunque son para TU protección).</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="faq-highlight">
+                            🛡️ <strong>Por eso es APK:</strong> Es la única forma de ofrecerte protección real contra el robo de WhatsApp.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-icon">💰</div>
+                        <h3>¿WApp Protect es realmente gratis?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Sí, completamente gratis por tiempo limitado.</strong> Normalmente costaría $49.99/mes, pero estamos en fase de lanzamiento.</p>
+                        <div class="pricing-comparison">
+                            <div class="price-before">
+                                <span class="price-label">Precio normal:</span>
+                                <span class="price-value crossed">$49.99/mes</span>
+                            </div>
+                            <div class="price-now">
+                                <span class="price-label">Precio HOY:</span>
+                                <span class="price-value free">GRATIS</span>
+                            </div>
+                        </div>
+                        <p><strong>¿Por qué gratis?</strong> Estamos construyendo la base de usuarios más grande de protección WhatsApp en Colombia.</p>
+                        <div class="faq-highlight">
+                            ⏰ <strong>Oferta limitada:</strong> Una vez que terminemos el lanzamiento, volverá al precio normal.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-icon">🔐</div>
+                        <h3>¿WApp Protect puede leer mis mensajes?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>No, jamás.</strong> WApp Protect NO puede leer, ver o acceder al contenido de tus mensajes de WhatsApp.</p>
+                        <div class="privacy-points">
+                            <div class="privacy-point">❌ NO leemos tus conversaciones</div>
+                            <div class="privacy-point">❌ NO vemos tus fotos o videos</div>
+                            <div class="privacy-point">❌ NO accedemos a tus contactos</div>
+                            <div class="privacy-point">✅ SOLO monitoreamos intentos de acceso sospechosos</div>
+                        </div>
+                        <p><strong>Solo detectamos cuando alguien intenta entrar a tu cuenta,</strong> no qué hay dentro de ella.</p>
+                        <div class="faq-highlight">
+                            🔒 <strong>Privacidad garantizada:</strong> Tu información personal nunca sale de tu dispositivo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soporte adicional -->
+            <div class="faq-support">
+                <div class="support-box">
+                    <h3>¿Tienes más preguntas?</h3>
+                    <p>Nuestro equipo de soporte está disponible 24/7 para resolver cualquier duda</p>
+                    <div class="support-channels">
+                        <div class="support-channel">
+                            <span class="channel-icon">📞</span>
+                            <span class="channel-info">WhatsApp: +57 300 123 4567</span>
+                        </div>
+                        <div class="support-channel">
+                            <span class="channel-icon">📧</span>
+                            <span class="channel-info">Email: soporte@wappprotect.com</span>
+                        </div>
+                        <div class="support-channel">
+                            <span class="channel-icon">💬</span>
+                            <span class="channel-info">Chat en vivo 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA después de FAQ -->
+            <div class="faq-cta">
+                <h3>¿Ya resolvimos tus dudas?</h3>
+                <p>Es momento de proteger tu WhatsApp antes de que sea demasiado tarde</p>
+                <a href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk" class="cta-button-faq">
+                    🛡️ PROTEGER MI WHATSAPP AHORA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    function toggleFAQ(element) {
+        const faqItem = element.parentElement;
+        const answer = faqItem.querySelector('.faq-answer');
+        const question = faqItem.querySelector('.faq-question');
+        
+        // Cerrar otros FAQs abiertos
+        document.querySelectorAll('.faq-question.active').forEach(activeQuestion => {
+            if (activeQuestion !== question) {
+                activeQuestion.classList.remove('active');
+                activeQuestion.parentElement.querySelector('.faq-answer').classList.remove('active');
+            }
+        });
+        
+        // Toggle el FAQ actual
+        question.classList.toggle('active');
+        answer.classList.toggle('active');
+    }
+</script>
+
+<!-- *******************FOOTER CON MÚLTIPLES CTAs*************************** -->
+
+<!-- FOOTER CON MÚLTIPLES CTAs -->
+    <footer class="footer-section">
+        <!-- CTA Principal del Footer -->
+        <div class="footer-cta-main">
+            <div class="footer-cta-container">
+                <div class="final-urgency">
+                    <div class="urgency-text">
+                        <h2>🚨 No esperes a ser víctima</h2>
+                        <p>Cada minuto sin protección es una oportunidad para los delincuentes</p>
+                    </div>
+                    <div class="final-stats">
+                        <div class="final-stat">
+                            <span class="stat-num" id="attacks-today">2,847</span>
+                            <span class="stat-desc">Ataques hoy</span>
+                        </div>
+                        <div class="final-stat">
+                            <span class="stat-num">⏰</span>
+                            <span class="stat-desc">Cada 18 segundos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botón principal gigante -->
+                <div class="mega-cta">
+                    <a href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk" class="mega-download-button" id="final-download-btn">
+                        <div class="button-content">
+                            <div class="button-icon">🛡️</div>
+                            <div class="button-text">
+                                <span class="main-text">DESCARGAR WAPP PROTECT GRATIS</span>
+                                <span class="sub-text">Protección instantánea • Sin costo • 60 segundos</span>
+                            </div>
+                            <div class="button-arrow">→</div>
+                        </div>
+                        <div class="button-shine"></div>
+                    </a>
+                </div>
+
+                <!-- Garantías y confianza -->
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <div class="badge-icon">💰</div>
+                        <div class="badge-content">
+                            <h4>Garantía 30 días</h4>
+                            <p>O te devolvemos el dinero</p>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-content">
+                            <h4>100% Seguro</h4>
+                            <p>Sin virus • Sin malware</p>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <div class="badge-icon">⚡</div>
+                        <div class="badge-content">
+                            <h4>Activación Instantánea</h4>
+                            <p>Protegido en 60 segundos</p>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <div class="badge-icon">📞</div>
+                        <div class="badge-content">
+                            <h4>Soporte 24/7</h4>
+                            <p>Ayuda cuando la necesites</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información del Footer -->
+        <div class="footer-info">
+            <div class="footer-content">
+                <!-- Columna 1: Producto -->
+                <div class="footer-column">
+                    <h3>🛡️ WApp Protect</h3>
+                    <p>La única protección real contra el robo de WhatsApp en Colombia.</p>
+                    <div class="app-stats">
+                        <div class="app-stat">
+                            <span class="stat-icon">👥</span>
+                            <span>47,832+ usuarios protegidos</span>
+                        </div>
+                        <div class="app-stat">
+                            <span class="stat-icon">🛡️</span>
+                            <span>12,436 ataques bloqueados</span>
+                        </div>
+                        <div class="app-stat">
+                            <span class="stat-icon">💰</span>
+                            <span>$847M en dinero protegido</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Soporte -->
+                <div class="footer-column">
+                    <h3>📞 Soporte Técnico</h3>
+                    <div class="support-links">
+                        <a href="#" class="support-link">
+                            <span class="link-icon">💬</span>
+                            <div class="link-content">
+                                <strong>Chat en Vivo 24/7</strong>
+                                <small>Respuesta inmediata</small>
+                            </div>
+                        </a>
+                        <a href="#" class="support-link">
+                            <span class="link-icon">📱</span>
+                            <div class="link-content">
+                                <strong>WhatsApp: +57 300 123 4567</strong>
+                                <small>Soporte técnico especializado</small>
+                            </div>
+                        </a>
+                        <a href="#" class="support-link">
+                            <span class="link-icon">📧</span>
+                            <div class="link-content">
+                                <strong>soporte@wappprotect.com</strong>
+                                <small>Email de soporte</small>
+                            </div>
+                        </a>
+                        <a href="#" class="support-link">
+                            <span class="link-icon">📖</span>
+                            <div class="link-content">
+                                <strong>Guía de Instalación</strong>
+                                <small>Tutorial paso a paso</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Garantías -->
+                <div class="footer-column">
+                    <h3>✅ Garantías</h3>
+                    <div class="guarantees">
+                        <div class="guarantee-item">
+                            <div class="guarantee-header">
+                                <span class="guarantee-icon">💰</span>
+                                <strong>Garantía de 30 días</strong>
+                            </div>
+                            <p>Si WApp Protect no cumple con tus expectativas, te devolvemos el 100% de tu dinero. Sin preguntas.</p>
+                        </div>
+                        <div class="guarantee-item">
+                            <div class="guarantee-header">
+                                <span class="guarantee-icon">🛡️</span>
+                                <strong>Protección Garantizada</strong>
+                            </div>
+                            <p>Si tu WhatsApp es robado teniendo WApp Protect activo, cubrimos las pérdidas hasta $5,000,000 COP.</p>
+                        </div>
+                        <div class="guarantee-item">
+                            <div class="guarantee-header">
+                                <span class="guarantee-icon">🔧</span>
+                                <strong>Instalación Garantizada</strong>
+                            </div>
+                            <p>Nuestro equipo técnico te ayuda gratis hasta que tengas WApp Protect funcionando perfectamente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 4: Descarga Móvil -->
+                <div class="footer-column mobile-download">
+                    <h3>📱 Descarga Directa</h3>
+                    <div class="mobile-cta">
+                        <p>¿Estás en tu celular? Descarga directamente:</p>
+                        <a href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk" class="mobile-download-btn">
+                            📥 DESCARGAR APK AHORA
+                        </a>
+                        <div class="mobile-specs">
+                            <div class="spec">✅ Android 7.0+</div>
+                            <div class="spec">✅ 5MB tamaño</div>
+                            <div class="spec">✅ Sin internet requerido</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Última llamada a la acción -->
+        <div class="final-cta-strip">
+            <div class="strip-content">
+                <div class="strip-text">
+                    <h4>⚠️ Última oportunidad para protegerte GRATIS</h4>
+                    <p>La protección gratuita termina pronto. No te quedes sin defensa.</p>
+                </div>
+                <a href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk" class="strip-cta-btn">
+                    🚨 DESCARGAR AHORA - GRATIS
+                </a>
+            </div>
+        </div>
+
+        <!-- Copyright y legales -->
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <p>&copy; 2024 WApp Protect. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="#">Términos de Uso</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Aviso Legal</a>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                <p><small>WApp Protect no está afiliado con WhatsApp Inc. WhatsApp es una marca registrada de Meta Platforms, Inc. Esta aplicación es una herramienta de seguridad independiente.</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Actualizar contador de ataques en footer
+    function updateFooterStats() {
+        const attacksElement = document.getElementById('attacks-today');
+        if (attacksElement) {
+            let current = parseInt(attacksElement.textContent.replace(',', ''));
+            attacksElement.textContent = (current + Math.floor(Math.random() * 3) + 1).toLocaleString();
+        }
+    }
+
+    // Tracking de clicks en botones de descarga
+    document.querySelectorAll('a[href="https://github.com/photoshield/photoshield/releases/download/v1.0.0/wapp-protect.apk"]').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Aquí iría la lógica real de descarga
+            // Por ahora simulamos
+            alert('¡Descarga iniciada! El archivo APK se descargará automáticamente.\n\nSigue las instrucciones de instalación que viste en la página.');
+            
+            // Opcional: redirigir a un archivo real
+            // window.location.href = 'ruta/al/archivo/wappprotect.apk';
+        });
+    });
+
+    // Actualizar stats del footer cada 20 segundos
+    setInterval(updateFooterStats, 20000);
+</script>
+
+</body>
+</html>
+
